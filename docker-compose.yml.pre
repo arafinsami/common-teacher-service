@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  service:
+    container_name: eteacher_service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./.:/home/eteacher_service
+    ports:
+      - "8034:8034"
+    tty: true
+    command: tail -F anything
+    networks:
+      - server
+
+networks:
+  server:
+    driver: bridge
